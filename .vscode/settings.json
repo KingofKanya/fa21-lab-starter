@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "optional": "c",
+        "assert.h": "c"
+    }
+}
