@@ -55,7 +55,8 @@ void print_list(struct Node *head) {
 
 /* Iteratively reverses a linked list whose first node is HEAD */
 void reverse_list(struct Node **head) {
-    if (head == NULL) {
+    if (head == NULL || *head == NULL) {
+        //如果head为NULL，那么在对其进行解引用(*head)之前，你需要检查它是否为NULL，以避免访问无效的内存地址，从而引发未定义行为或崩溃。
         return;
     }
     struct Node *curr = *head;
@@ -76,10 +77,14 @@ void add_to_back(Node **head, int data) {
     if (head == NULL) {
         return;
     }
+    if (*head == NULL) {
+        *head = create_node(data);
+        return;
+    }
     Node *new_node = create_node(data);
     Node *prev;
     for (Node *curr = *head; curr != NULL; curr = curr->next) {
         prev = curr;
-    }
+    }       
     prev->next = new_node;
 }
